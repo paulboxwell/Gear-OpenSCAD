@@ -1,12 +1,8 @@
 module gear(radius = 16, depth = 2, teeth = 10, spokes = 16) {
     // Central Hub
-    intersection()
-    {
     difference() {
-        cylinder(h = depth, r = radius * 0.3, center = true);
-        cylinder(h = depth + 1, r = radius * 0.1, center = true);
-    }
-    sphere(r = radius * 0.3);
+        cylinder(h = depth, r = 2, center = true);
+        cylinder(h = depth + 1, r = 0.5, center = true);
     }
 
     // Outer Ring
@@ -27,7 +23,7 @@ module gear(radius = 16, depth = 2, teeth = 10, spokes = 16) {
             Dedendum(radius / teeth * 3.14, depth + 1);
         }
         // Hole
-        cylinder(h = depth + 1, r = radius * 0.8, center = true);
+        cylinder(h = depth + 1, r = radius - radius / teeth * 3.14 * 2 , center = true);
     }
 
     // Spokes
@@ -58,8 +54,8 @@ module Addendum(size, depth) {
 module spoke(radius, depth) {
     intersection()
     {
-    cube([radius *0.75, radius * 0.1, depth], center = true);
-    rotate([0, 90, 0])
-    cylinder(h = radius *0.75, r = radius * 0.05, center = true);
+    cube([radius - 1.6, depth/2, depth], center = true);
+    //rotate([0, 90, 0])
+    //cylinder(h = radius *0.75, r = 0.75, center = true);
     }
 }
