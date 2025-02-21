@@ -45,7 +45,7 @@ module Dedendum(size, depth) {
 // Addendum Module
 module Addendum(size, depth) {
     tooth_height = size / 2 * 0.9;
-    tooth_depth_width = size/3;
+    tooth_depth_width = size/3.5;
     linear_extrude(height = depth, center = true)
     polygon(points = [[-tooth_depth_width*4, -size], [-tooth_depth_width*4, size], [tooth_height, tooth_depth_width], [tooth_height, -tooth_depth_width]]);
 }
